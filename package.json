@@ -6,10 +6,25 @@
     "develop": "gatsby develop --port 8001",
     "start": "gatsby develop --port 8001",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "test": "healthier"
+  },
+  "engines": {
+    "node": ">= 12.13.0"
   },
   "author": "Robin Millette <robin@millette.info> (http://robin.millette.info/)",
   "license": "AGPL-3.0",
+  "healthier": {
+    "globals": [
+      "fetch"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended"
+    ]
+  },
   "dependencies": {
     "@theme-ui/prism": "^0.2.46",
     "deepmerge": "^4.2.2",
@@ -17,5 +32,8 @@
     "gatsby-theme-style-guide": "^0.2.49",
     "gatsby-theme-ui-blog": "^0.2.49",
     "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "healthier": "^3.2.0"
   }
 }
