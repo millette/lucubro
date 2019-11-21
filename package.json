@@ -1,21 +1,19 @@
 {
   "name": "t3",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gatsby build",
+    "develop": "gatsby develop --port 8001",
+    "start": "gatsby develop --port 8001",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
   },
-  "keywords": [],
   "author": "Robin Millette <robin@millette.info> (http://robin.millette.info/)",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@theme-ui/presets": "^0.2.44",
     "gatsby": "^2.18.1",
-    "gatsby-plugin-theme-ui": "^0.2.43",
     "gatsby-theme-style-guide": "^0.2.49",
     "gatsby-theme-ui-blog": "^0.2.49",
-    "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
 }
