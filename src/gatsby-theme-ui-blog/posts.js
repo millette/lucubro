@@ -3,26 +3,23 @@
 // npm
 import { jsx, Styled } from "theme-ui"
 import { Link } from "gatsby"
-// import { Layout } from "gatsby-theme-ui-layout"
 import PropTypes from "prop-types"
 
 // self
 import Layout from "../shared/layout"
 
 const Posts = ({ posts, ...props }) => (
-  <Styled.root>
-    <Layout {...props}>
-      <h1>Hello world!</h1>
+  <Layout {...props}>
+    <Styled.h1>Hello world!</Styled.h1>
 
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id}>
-            <Link to={post.slug}>{post.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </Layout>
-  </Styled.root>
+    <Styled.ul>
+      {posts.map((post) => (
+        <Styled.li key={post.id}>
+          <Link to={post.slug}>{post.title}</Link>
+        </Styled.li>
+      ))}
+    </Styled.ul>
+  </Layout>
 )
 
 Posts.propTypes = {
