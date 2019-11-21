@@ -10,10 +10,26 @@
     "test": "healthier"
   },
   "engines": {
-    "node": ">= 12.13.0"
+    "node": ">= 12.13.1"
   },
   "author": "Robin Millette <robin@millette.info> (http://robin.millette.info/)",
   "license": "AGPL-3.0",
+  "lint-staged": {
+    "*.{js,json,md,mdx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "trailingComma": "es5",
+    "arrowParens": "always"
+  },
   "healthier": {
     "globals": [
       "fetch"
@@ -34,6 +50,9 @@
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "healthier": "^3.2.0"
+    "healthier": "^3.2.0",
+    "husky": "2.7.0",
+    "lint-staged": "^9.4.3",
+    "prettier": "^1.19.1"
   }
 }
