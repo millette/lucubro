@@ -1,7 +1,6 @@
 /** @jsx jsx */
 
 // npm
-import React from "react"
 import { Link } from "gatsby"
 import {
   jsx,
@@ -47,6 +46,18 @@ const OwnLayout = (props) => {
               >
                 Toggle {colorMode === "default" ? "Dark" : "Light"}
               </button>
+            </Box>
+          </Flex>
+          <Flex
+            sx={{
+              justifyContent: "space-evenly",
+            }}
+          >
+            <Box>
+              <Link to="/about">About</Link>
+            </Box>
+            <Box>
+              <Link to="/style-guide">Style guide</Link>
             </Box>
           </Flex>
         </Container>
