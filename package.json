@@ -10,6 +10,7 @@
   "author": "Robin Millette <robin@millette.info> (http://robin.millette.info/)",
   "license": "AGPL-3.0",
   "dependencies": {
+    "@theme-ui/presets": "^0.2.44",
     "gatsby": "^2.18.1",
     "gatsby-plugin-theme-ui": "^0.2.43",
     "gatsby-theme-style-guide": "^0.2.49",
