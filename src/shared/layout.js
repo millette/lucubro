@@ -1,37 +1,69 @@
+/** @jsx jsx */
+
 // npm
 import React from "react"
 import { Link } from "gatsby"
-import { useColorMode } from "theme-ui"
+import {
+  jsx,
+  useColorMode,
+  Layout,
+  Header,
+  Main,
+  Container,
+  Footer,
+  Flex,
+  Box,
+  Styled,
+} from "theme-ui"
 import PropTypes from "prop-types"
 
 // self
 import Head from "./head"
 
-const Layout = (props) => {
+const OwnLayout = (props) => {
   const [colorMode, setColorMode] = useColorMode()
 
   return (
-    <>
+    <Layout>
       <Head {...props} />
-      <h1>
-        <Link to="/">My own ham</Link>
-      </h1>
+      <Header>
+        <Container>
+          <Flex
+            sx={{
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Box>
+              <Styled.h1>
+                <Link to="/">My own ham</Link>
+              </Styled.h1>
+            </Box>
+            <Box>
+              <button
+                onClick={() => {
+                  setColorMode(colorMode === "default" ? "dark" : "default")
+                }}
+              >
+                Toggle {colorMode === "default" ? "Dark" : "Light"}
+              </button>
+            </Box>
+          </Flex>
+        </Container>
+      </Header>
+      <Main>
+        <Container>{props.children}</Container>
+      </Main>
 
-      <button
-        onClick={() => {
-          setColorMode(colorMode === "default" ? "dark" : "default")
-        }}
-      >
-        Toggle {colorMode === "default" ? "Dark" : "Light"}
-      </button>
-
-      {props.children}
-    </>
+      <Footer>
+        <Container>Footer...</Container>
+      </Footer>
+    </Layout>
   )
 }
 
-Layout.propTypes = {
+OwnLayout.propTypes = {
   children: PropTypes.any,
 }
 
-export default Layout
+export default OwnLayout
