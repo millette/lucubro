@@ -1,0 +1,20 @@
+{
+  "name": "t3",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Robin Millette <robin@millette.info> (http://robin.millette.info/)",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "gatsby": "^2.18.1",
+    "gatsby-plugin-theme-ui": "^0.2.43",
+    "gatsby-theme-style-guide": "^0.2.49",
+    "gatsby-theme-ui-blog": "^0.2.49",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
