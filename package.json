@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop --port 8001",
     "start": "gatsby develop --port 8001",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
