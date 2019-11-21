@@ -7,6 +7,7 @@ import prism from '@theme-ui/prism/presets/theme-ui'
 // export default {}
 
 export default deepmerge(theme, {
+  useColorSchemeMediaQuery: true,
   styles: {
     pre: {
       ...prism
