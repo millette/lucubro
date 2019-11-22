@@ -2,11 +2,11 @@
 
 // npm
 import { jsx, Styled } from "theme-ui"
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 
 // self
 import Layout from "../shared/layout"
+import Link from "../shared/link"
 
 const Posts = ({ posts, ...props }) => (
   <Layout {...props}>
