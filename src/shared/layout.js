@@ -1,7 +1,7 @@
 /** @jsx jsx */
 
 // npm
-// import React from "react"
+import React from "react" // eslint-disable-line no-unused-vars
 import { Link } from "gatsby"
 import {
   jsx,
@@ -99,7 +99,7 @@ const OwnLayout = (props) => {
 
       <Footer>
         <Container>
-          <hr />
+          <Styled.hr />
           <Styled.p>Footer...</Styled.p>
         </Container>
       </Footer>
