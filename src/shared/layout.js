@@ -36,7 +36,7 @@ const OwnLayout = (props) => {
           >
             <Box>
               <Styled.h1>
-                <Link to="/">I still have a pony</Link>
+                <Link to="/">I still have a project</Link>
               </Styled.h1>
             </Box>
             <Box>
