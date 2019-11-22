@@ -37,17 +37,22 @@ const OwnLayout = (props) => {
             >
               <Box>
                 <Styled.h1>
-                  <Link href="/">I still have a project (v1)</Link>
+                  <Link to="/">I still have a project</Link>
                 </Styled.h1>
               </Box>
               <Box>
-                <button
+                <Styled.div
+                  as="button"
+                  sx={{
+                    p: 2,
+                    color: "highlight",
+                  }}
                   onClick={() => {
                     setColorMode(colorMode === "default" ? "dark" : "default")
                   }}
                 >
                   Toggle {colorMode === "default" ? "Dark" : "Light"}
-                </button>
+                </Styled.div>
               </Box>
             </Flex>
             <Flex
