@@ -4,12 +4,14 @@
 import React from "react" // eslint-disable-line no-unused-vars
 import { jsx, Styled } from "theme-ui"
 import Prism from "@theme-ui/prism"
-import { Link as GatsbyLink } from "gatsby"
 import PropTypes from "prop-types"
+
+// self
+import Link from "../shared/link"
 
 const re = /^https{0,1}:\/\//
 
-const Link = ({ href, ...props }) =>
+const MdxLink = ({ href, ...props }) =>
   re.test(href) ? (
     <Styled.a
       {...props}
@@ -18,15 +20,15 @@ const Link = ({ href, ...props }) =>
       href={href}
     />
   ) : (
-    <GatsbyLink {...props} to={href} />
+    <Link {...props} to={href} />
   )
 
-Link.propTypes = {
+MdxLink.propTypes = {
   href: PropTypes.string.isRequired,
 }
 
 export default {
-  a: Link,
+  a: MdxLink,
   pre: ({ children }) => children,
   code: Prism,
 }
