@@ -1,1 +1,1 @@
-src/pages/\_about.mdx
+src/pages/readme.md
