@@ -1,6 +1,7 @@
 /** @jsx jsx */
 
 // npm
+import React from "react"
 import { Link } from "gatsby"
 import {
   jsx,
@@ -20,8 +21,6 @@ import PropTypes from "prop-types"
 import Head from "./head"
 
 const OwnLayout = (props) => {
-  console.log("LAYOUT", props)
-
   const [colorMode, setColorMode] = useColorMode()
 
   return (
@@ -68,28 +67,33 @@ const OwnLayout = (props) => {
         <Container>
           {props.children}
 
-          <Styled.hr />
-          <Styled.h3>More articles</Styled.h3>
+          {props.data && (props.data.previous || props.data.next) && (
+            <>
+              <Styled.h3>More articles</Styled.h3>
 
-          <Flex
-            sx={{
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Box>
-              {props.data && props.data.previous && (
-                <Link to={props.data.previous.slug}>
-                  {props.data.previous.title}
-                </Link>
-              )}
-            </Box>
-            <Box>
-              {props.data && props.data.next && (
-                <Link to={props.data.next.slug}>{props.data.next.title}</Link>
-              )}
-            </Box>
-          </Flex>
+              <Flex
+                sx={{
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <Box>
+                  {props.data && props.data.previous && (
+                    <Link to={props.data.previous.slug}>
+                      {props.data.previous.title}
+                    </Link>
+                  )}
+                </Box>
+                <Box>
+                  {props.data && props.data.next && (
+                    <Link to={props.data.next.slug}>
+                      {props.data.next.title}
+                    </Link>
+                  )}
+                </Box>
+              </Flex>
+            </>
+          )}
         </Container>
       </Main>
 
