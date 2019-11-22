@@ -6,8 +6,8 @@ import { Link } from "gatsby"
 import { jsx, Styled } from "theme-ui"
 import PropTypes from "prop-types"
 
-const StyledLink = ({ to, href, ...props }) => (
-  <Styled.a {...props} to={to || href} as={Link} />
+const StyledLink = ({ to, ...props }) => (
+  <Styled.a {...props} to={to} as={Link} />
 )
 
 StyledLink.propTypes = {
