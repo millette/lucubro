@@ -3,12 +3,19 @@ import React from "react"
 import { Helmet } from "react-helmet"
 import PropTypes from "prop-types"
 
-const Head = ({ lang = "en-us", title, excerpt, ...props }) => {
+const Head = ({
+  data,
+  _frontmatter,
+  lang = "en-us",
+  title,
+  excerpt,
+  ...props
+}) => {
   if (!title) {
-    if (props._frontmatter && props._frontmatter.title) {
-      title = props._frontmatter.title
-    } else if (props.data && props.data.site.siteMetadata.title) {
-      title = props.data.site.siteMetadata.title
+    if (_frontmatter && _frontmatter.title) {
+      title = _frontmatter.title
+    } else if (data && data.site.siteMetadata.title) {
+      title = data.site.siteMetadata.title
     }
   }
   return (
@@ -28,6 +35,8 @@ Head.propTypes = {
   lang: PropTypes.string,
   title: PropTypes.string,
   excerpt: PropTypes.string,
+  _frontmatter: PropTypes.object,
+  data: PropTypes.object,
 }
 
 export default Head
