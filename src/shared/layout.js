@@ -44,14 +44,16 @@ const OwnLayout = (props) => {
                 <Styled.div
                   as="button"
                   sx={{
-                    p: 2,
-                    color: "highlight",
+                    textAlign: "center",
+                    border: "none",
+                    fontSize: "2rem",
+                    bg: "black",
                   }}
                   onClick={() => {
                     setColorMode(colorMode === "default" ? "dark" : "default")
                   }}
                 >
-                  Toggle {colorMode === "default" ? "Dark" : "Light"}
+                  {colorMode === "default" ? "🌛" : "🌞"}
                 </Styled.div>
               </Box>
             </Flex>
