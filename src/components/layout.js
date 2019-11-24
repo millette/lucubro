@@ -43,11 +43,17 @@ const OwnLayout = (props) => {
               <Box>
                 <Styled.div
                   as="button"
+                  title={
+                    colorMode === "default" ? "Set dark mode" : "Set light mode"
+                  }
                   sx={{
-                    textAlign: "center",
-                    border: "none",
-                    fontSize: "2rem",
-                    bg: "black",
+                    pr: colorMode === "default" ? "0.7rem" : 0,
+                    border: "thin solid black",
+                    display: "block",
+                    width: "100%",
+                    cursor: "pointer",
+                    fontSize: 5,
+                    background: "black",
                   }}
                   onClick={() => {
                     setColorMode(colorMode === "default" ? "dark" : "default")
