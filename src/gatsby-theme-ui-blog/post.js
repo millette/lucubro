@@ -5,7 +5,7 @@ import { jsx, Styled } from "theme-ui"
 import PropTypes from "prop-types"
 
 // self
-import Layout from "../shared/layout"
+import Layout from "../components/layout"
 
 const Post = ({ title, date, excerpt, children, keywords, tags, ...props }) => (
   <Layout title={title} excerpt={excerpt} {...props}>

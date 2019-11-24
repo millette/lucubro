@@ -7,7 +7,7 @@ import Prism from "@theme-ui/prism"
 import PropTypes from "prop-types"
 
 // self
-import Link from "../shared/link"
+import Link from "../components/link"
 
 const re = /^https{0,1}:\/\//
 

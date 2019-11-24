@@ -5,8 +5,8 @@ import { jsx, Styled } from "theme-ui"
 import PropTypes from "prop-types"
 
 // self
-import Layout from "../shared/layout"
-import Link from "../shared/link"
+import Layout from "../components/layout"
+import Link from "../components/link"
 
 const Posts = ({ posts, ...props }) => (
   <Layout {...props}>
