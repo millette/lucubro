@@ -9,11 +9,25 @@ module.exports = {
     author: author.name,
     description,
     siteUrl: `https://millette.github.io/${name}`,
-    social: {
-      // twitter: `RoLLodeQc`,
-      name: `millette@mastodon`,
-      url: `https://mastodon.fedi.quebec/@millette`,
-    },
+    social: [
+      {
+        name: "Homepage",
+        url: "http://robin.millette.info/",
+      },
+      {
+        name: "millette@mastodon",
+        url: "https://mastodon.fedi.quebec/@millette",
+      },
+    ],
   },
-  plugins: ["gatsby-theme-ui-blog", "gatsby-theme-style-guide"],
+  plugins: [
+    {
+      resolve: "gatsby-theme-blog",
+      options: {},
+    },
+    {
+      resolve: "gatsby-theme-style-guide",
+      options: {},
+    },
+  ],
 }
