@@ -1,5 +1,7 @@
+// npm
 import React, { Fragment } from "react"
 import { Styled, css } from "theme-ui"
+import PropTypes from "prop-types"
 
 const Footer = ({ socialLinks }) => (
   <footer
@@ -8,7 +10,7 @@ const Footer = ({ socialLinks }) => (
       pt: 3,
     })}
   >
-    © 2019 Robin Millette. Powered by Gatsby{` `}&bull;{` `}
+    © 2019 Robin Millette. Powered by Gatsby &bull;
     {socialLinks.map((platform, i, arr) => (
       <Fragment key={platform.url}>
         <Styled.a
@@ -18,13 +20,14 @@ const Footer = ({ socialLinks }) => (
         >
           {platform.name}
         </Styled.a>
-        {arr.length - 1 !== i && (
-          <Fragment>
-            {` `}&bull;{` `}
-          </Fragment>
-        )}
+        {arr.length - 1 !== i && <> &bull; </>}
       </Fragment>
     ))}
   </footer>
 )
+
+Footer.propTypes = {
+  socialLinks: PropTypes.array,
+}
+
 export default Footer
