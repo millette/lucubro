@@ -1,8 +1,5 @@
-/** @jsx jsx */
-
 // npm
-import React from "react" // eslint-disable-line no-unused-vars
-import { jsx, Styled } from "theme-ui"
+import React from "react"
 import Prism from "@theme-ui/prism"
 import PropTypes from "prop-types"
 
