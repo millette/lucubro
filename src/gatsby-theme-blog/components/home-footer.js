@@ -10,7 +10,7 @@ const Footer = ({ socialLinks }) => (
       pt: 3,
     })}
   >
-    © 2019 Robin Millette. Powered by Gatsby &bull;
+    © 2019 Robin Millette. Powered by Gatsby &bull;{" "}
     {socialLinks.map((platform, i, arr) => (
       <Fragment key={platform.url}>
         <Styled.a
