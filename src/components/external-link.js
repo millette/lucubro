@@ -1,9 +1,14 @@
 // npm
 import React from "react"
 import { Styled } from "theme-ui"
+import PropTypes from "prop-types"
 
-const Link = ({ to, ...props }) => (
+const ExternalLink = ({ to, ...props }) => (
   <Styled.a {...props} target="_blank" rel="noopener noreferrer" href={to} />
 )
 
-export default Link
+ExternalLink.propTypes = {
+  to: PropTypes.string.isRequired,
+}
+
+export default ExternalLink
