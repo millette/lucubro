@@ -1,4 +1,5 @@
 node_modules/
 .cache/
 public/
-
+gatsby-theme-ui-blog-stuff/makada/
+package-bah.json
