@@ -1,6 +1,6 @@
 {
   "name": "lucubro",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "My 30 year journey coding hundreds of projects.",
   "scripts": {
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
