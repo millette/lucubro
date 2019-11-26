@@ -2,7 +2,8 @@
 import React, { Fragment } from "react"
 import { Styled, css, Container, Main } from "theme-ui"
 import Layout from "gatsby-theme-blog/src/components/layout"
-import SEO from "gatsby-theme-blog/src/components/seo"
+import Seo from "gatsby-theme-blog/src/components/seo"
+import PropTypes from "prop-types"
 
 // self
 import Footer from "../components/home-footer"
@@ -17,7 +18,7 @@ const Posts = ({ location, posts, siteTitle, socialLinks }) => (
           const keywords = node.keywords || []
           return (
             <Fragment key={node.slug}>
-              <SEO title="Home" keywords={keywords} />
+              <Seo title="Home" keywords={keywords} />
               <div>
                 <Styled.h2
                   css={css({
@@ -45,5 +46,12 @@ const Posts = ({ location, posts, siteTitle, socialLinks }) => (
     <Footer socialLinks={socialLinks} />
   </Layout>
 )
+
+Posts.propTypes = {
+  posts: PropTypes.array.isRequired,
+  location: PropTypes.object.isRequired,
+  siteTitle: PropTypes.string.isRequired,
+  socialLinks: PropTypes.arrayOf,
+}
 
 export default Posts
