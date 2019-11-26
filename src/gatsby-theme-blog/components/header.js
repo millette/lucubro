@@ -14,12 +14,15 @@ import {
 import Switch from "gatsby-theme-blog/src/components/switch"
 import sun from "gatsby-theme-blog/assets/sun.png"
 import moon from "gatsby-theme-blog/assets/moon.png"
+import PropTypes from "prop-types"
+import { withPrefix } from "gatsby"
 
 // self
 import Bio from "../components/bio"
 import Link from "../../components/link"
 
-const rootPath = `${__PATH_PREFIX__}/`
+// const rootPath = `${__PATH_PREFIX__}/`
+const rootPath = withPrefix()
 
 const Title = ({ children, location }) => {
   if (location && location.pathname === rootPath) {
@@ -31,12 +34,12 @@ const Title = ({ children, location }) => {
         })}
       >
         <Link
-          css={{
+          css={css({
             color: `inherit`,
             boxShadow: `none`,
             textDecoration: `none`,
-          }}
-          to={`/`}
+          })}
+          to="/"
         >
           {children}
         </Link>
@@ -56,13 +59,18 @@ const Title = ({ children, location }) => {
             textDecoration: `none`,
             color: `primary`,
           })}
-          to={`/`}
+          to="/"
         >
           {children}
         </Link>
       </Styled.h3>
     )
   }
+}
+
+Title.propTypes = {
+  location: PropTypes.object,
+  children: PropTypes.any,
 }
 
 const checkedIcon = (
@@ -93,7 +101,7 @@ const uncheckedIcon = (
   />
 )
 
-export default ({ children, title, ...props }) => {
+const BlogHeader = ({ children, title, ...props }) => {
   const [colorMode, setColorMode] = useColorMode()
   const isDark = colorMode === `dark`
   const toggleColorMode = (e) => {
@@ -131,3 +139,11 @@ export default ({ children, title, ...props }) => {
     </Header>
   )
 }
+
+BlogHeader.propTypes = {
+  location: PropTypes.object,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.any,
+}
+
+export default BlogHeader
