@@ -4,11 +4,12 @@ import DirectoryList from "gatsby-theme-notes/src/components/directory-list"
 import FileList from "gatsby-theme-notes/src/components/file-list"
 import Breadcrumbs from "gatsby-theme-notes/src/components/breadcrumbs"
 import Layout from "gatsby-theme-notes/src/components/layout"
+import PropTypes from "prop-types"
 
 // self
 import Link from "../../components/link"
 
-export default ({
+const Notes = ({
   directories,
   files,
   breadcrumbs = [],
@@ -24,3 +25,12 @@ export default ({
     <FileList files={files} />
   </Layout>
 )
+
+Notes.propTypes = {
+  siteTitle: PropTypes.string.isRequired,
+  directories: PropTypes.any.isRequired,
+  breadcrumbs: PropTypes.array.isRequired,
+  files: PropTypes.any.isRequired,
+}
+
+export default Notes
