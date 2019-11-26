@@ -2,11 +2,12 @@
 import React from "react"
 import { css, Styled } from "theme-ui"
 import Helmet from "react-helmet"
+import PropTypes from "prop-types"
 
 // self
 import Header from "./header"
 
-export default ({ children, ...props }) => (
+const BlogLayout = ({ children, ...props }) => (
   <Styled.root>
     <Helmet htmlAttributes={{ style: { overflowY: "scroll" } }} />
     <Header {...props} />
@@ -22,3 +23,9 @@ export default ({ children, ...props }) => (
     </div>
   </Styled.root>
 )
+
+BlogLayout.propTypes = {
+  children: PropTypes.any.isRequired,
+}
+
+export default BlogLayout
