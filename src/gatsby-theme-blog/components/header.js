@@ -22,7 +22,7 @@ import Link from "../../components/link"
 const rootPath = `${__PATH_PREFIX__}/`
 
 const Title = ({ children, location }) => {
-  if (location.pathname === rootPath) {
+  if (location && location.pathname === rootPath) {
     return (
       <Styled.h1
         css={css({
@@ -124,7 +124,9 @@ export default ({ children, title, ...props }) => {
             onChange={toggleColorMode}
           />
         </Flex>
-        {props.location.pathname === rootPath && <Bio sx={{ width: "100%" }} />}
+        {props.location && props.location.pathname === rootPath && (
+          <Bio sx={{ width: "100%" }} />
+        )}
       </Container>
     </Header>
   )
