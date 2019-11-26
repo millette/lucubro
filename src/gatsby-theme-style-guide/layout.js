@@ -2,12 +2,7 @@
 import MdxLayout from "../components/mdx-layout"
 
 const StyleGuideLayout = ({ children }) => (
-  <MdxLayout
-    location={{ pathname: "/style-guide/" }}
-    _frontmatter={{ title: "Style Guide" }}
-  >
-    {children}
-  </MdxLayout>
+  <MdxLayout _frontmatter={{ title: "Style Guide" }} children={children} />
 )
 
 export default StyleGuideLayout
