@@ -21,13 +21,14 @@ module.exports = {
     ],
   },
   plugins: [
+    "gatsby-theme-style-guide",
     {
-      resolve: "gatsby-theme-blog",
-      options: {},
+      resolve: "gatsby-theme-notes",
+      options: {
+        mdx: false,
+        basePath: "/notes",
+      },
     },
-    {
-      resolve: "gatsby-theme-style-guide",
-      options: {},
-    },
+    "gatsby-theme-blog",
   ],
 }
