@@ -9,7 +9,6 @@ import Header from "./header"
 export default ({ children, ...props }) => (
   <Styled.root>
     <Helmet htmlAttributes={{ style: "overflow-y: scroll" }} />
-
     <Header {...props} />
     <div>
       <div
