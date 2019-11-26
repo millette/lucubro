@@ -29,7 +29,7 @@ const Notes = ({
 Notes.propTypes = {
   siteTitle: PropTypes.string.isRequired,
   directories: PropTypes.any.isRequired,
-  breadcrumbs: PropTypes.array.isRequired,
+  breadcrumbs: PropTypes.array,
   files: PropTypes.any.isRequired,
 }
 

@@ -51,7 +51,7 @@ Posts.propTypes = {
   posts: PropTypes.array.isRequired,
   location: PropTypes.object.isRequired,
   siteTitle: PropTypes.string.isRequired,
-  socialLinks: PropTypes.arrayOf,
+  socialLinks: PropTypes.array,
 }
 
 export default Posts
