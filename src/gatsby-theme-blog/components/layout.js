@@ -1,5 +1,8 @@
+// npm
 import React from "react"
 import { css, Styled } from "theme-ui"
+
+// self
 import Header from "./header"
 
 export default ({ children, ...props }) => (

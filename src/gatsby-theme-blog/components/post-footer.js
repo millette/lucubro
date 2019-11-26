@@ -1,8 +1,10 @@
+// npm
 import React from "react"
-import { Link } from "gatsby"
 import { css, Styled, Flex, Footer, Container } from "theme-ui"
 
+// self
 import Bio from "../components/bio"
+import Link from "../../components/link"
 
 const PostFooter = ({ previous, next }) => (
   <Footer
@@ -26,16 +28,16 @@ const PostFooter = ({ previous, next }) => (
         >
           <li>
             {previous && (
-              <Styled.a as={Link} to={previous.slug} rel="prev">
+              <Link to={previous.slug} rel="prev">
                 ← {previous.title}
-              </Styled.a>
+              </Link>
             )}
           </li>
           <li>
             {next && (
-              <Styled.a as={Link} to={next.slug} rel="next">
+              <Link to={next.slug} rel="next">
                 {next.title} →
-              </Styled.a>
+              </Link>
             )}
           </li>
         </Flex>
