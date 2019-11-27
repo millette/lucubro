@@ -396,8 +396,6 @@ const themes = [
 
 export default themes
 
-///////////// STOP HERE RYM /////////////
-
 /*
 // HMM CONTRAST
 const ooo = {

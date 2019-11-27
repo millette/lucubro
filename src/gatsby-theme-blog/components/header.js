@@ -61,7 +61,6 @@ Title.propTypes = {
   children: PropTypes.any,
 }
 
-// .modes
 const Switch = ({ modes: { modes, ...light }, colorMode, setColorMode }) => {
   const modeKeys = Object.keys(modes).sort()
   modeKeys.push("light")
@@ -69,8 +68,8 @@ const Switch = ({ modes: { modes, ...light }, colorMode, setColorMode }) => {
   const modeIndex = Math.max(0, modeKeys.indexOf(colorMode)) + modeKeys.length
 
   const pal = [
-    (modeIndex - 1) % modeKeys.length,
     (modeIndex - 2) % modeKeys.length,
+    (modeIndex - 1) % modeKeys.length,
     modeIndex % modeKeys.length,
     (modeIndex + 1) % modeKeys.length,
     (modeIndex + 2) % modeKeys.length,
@@ -84,24 +83,33 @@ const Switch = ({ modes: { modes, ...light }, colorMode, setColorMode }) => {
   const click = (g) => () => setColorMode(g)
 
   return (
-    <code css={css({ bg: "text", padding: "0.25rem" })}>
-      {pal.map(({ n, name, fg, bg }) => (
+    <code css={css({ bg: "text", px: "0.25rem" })}>
+      {pal.map(({ n, name, fg, bg }, i) => (
         <span
+          title={i === 2 ? `Current colors: ${name}` : `Pick ${name} colors`}
           onClick={click(name)}
           key={n}
           style={{
-            padding: "0.25rem",
+            cursor: i === 2 ? "auto" : "pointer",
+
+            fontWeight: i === 2 ? "bold" : "normal",
+            padding: "0.6rem 0.25rem",
             margin: "0.25rem",
             color: fg,
             backgroundColor: bg,
           }}
         >
-          {" "}
-          &nbsp;#{n}&nbsp;{" "}
+          &nbsp;{name.replace("custom-", "#")}&nbsp;
         </span>
       ))}
     </code>
   )
+}
+
+Switch.propTypes = {
+  modes: PropTypes.array.isRequired,
+  colorMode: PropTypes.string.isRequired,
+  setColorMode: PropTypes.func.isRequired,
 }
 
 const BlogHeader = ({ children, title, ...props }) => {
