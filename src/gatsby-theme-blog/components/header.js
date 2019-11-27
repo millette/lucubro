@@ -2,19 +2,7 @@
 
 // npm
 // import React from "react"
-import {
-  jsx,
-  css,
-  // useColorMode,
-  Styled,
-  Header,
-  Container,
-  Flex,
-  useThemeUI,
-} from "theme-ui"
-// import Switch from "gatsby-theme-blog/src/components/switch"
-import sun from "gatsby-theme-blog/assets/sun.png"
-import moon from "gatsby-theme-blog/assets/moon.png"
+import { jsx, css, Styled, Header, Container, Flex, useThemeUI } from "theme-ui"
 import PropTypes from "prop-types"
 import { withPrefix } from "gatsby"
 
@@ -22,7 +10,6 @@ import { withPrefix } from "gatsby"
 import Bio from "../components/bio"
 import Link from "../../components/link"
 
-// const rootPath = `${__PATH_PREFIX__}/`
 const rootPath = withPrefix()
 
 const Title = ({ children, location }) => {
@@ -74,49 +61,51 @@ Title.propTypes = {
   children: PropTypes.any,
 }
 
-const checkedIcon = (
-  <img
-    alt="moon indicating dark mode"
-    src={moon}
-    width="16"
-    height="16"
-    role="presentation"
-    css={{
-      pointerEvents: `none`,
-      margin: 4,
-    }}
-  />
-)
+// .modes
+const Switch = ({ modes: { modes, ...light }, colorMode, setColorMode }) => {
+  const modeKeys = Object.keys(modes).sort()
+  modeKeys.push("light")
 
-const uncheckedIcon = (
-  <img
-    alt="sun indicating light mode"
-    src={sun}
-    width="16"
-    height="16"
-    role="presentation"
-    css={{
-      pointerEvents: `none`,
-      margin: 4,
-    }}
-  />
-)
+  const modeIndex = Math.max(0, modeKeys.indexOf(colorMode)) + modeKeys.length
+
+  const pal = [
+    (modeIndex - 1) % modeKeys.length,
+    (modeIndex - 2) % modeKeys.length,
+    modeIndex % modeKeys.length,
+    (modeIndex + 1) % modeKeys.length,
+    (modeIndex + 2) % modeKeys.length,
+  ].map((n) => ({
+    n,
+    name: modeKeys[n],
+    fg: modes[modeKeys[n]] ? modes[modeKeys[n]].text : light.text,
+    bg: modes[modeKeys[n]] ? modes[modeKeys[n]].background : light.background,
+  }))
+
+  const click = (g) => () => setColorMode(g)
+
+  return (
+    <code css={css({ bg: "text", padding: "0.25rem" })}>
+      {pal.map(({ n, name, fg, bg }) => (
+        <span
+          onClick={click(name)}
+          key={n}
+          style={{
+            padding: "0.25rem",
+            margin: "0.25rem",
+            color: fg,
+            backgroundColor: bg,
+          }}
+        >
+          {" "}
+          &nbsp;#{n}&nbsp;{" "}
+        </span>
+      ))}
+    </code>
+  )
+}
 
 const BlogHeader = ({ children, title, ...props }) => {
   const { theme, colorMode, setColorMode } = useThemeUI()
-  const modes = Object.keys(theme.colors.modes).sort()
-  modes.push("light")
-
-  let modeIndex = modes.indexOf(colorMode)
-  if (modeIndex === -1) modeIndex = 0
-
-  const toggleColorMode = (e) => {
-    const shifted = e.shiftKey ? -1 : 1
-    let newMode = modeIndex + shifted
-    if (newMode < 0) newMode = modes.length - 1
-    if (newMode > modes.length - 1) newMode = 0
-    setColorMode(modes[newMode])
-  }
 
   return (
     <Header
@@ -134,9 +123,11 @@ const BlogHeader = ({ children, title, ...props }) => {
           }}
         >
           <Title {...props}>{title}</Title>
-          <div aria-label="Toggle dark mode" onClick={toggleColorMode}>
-            Switch
-          </div>
+          <Switch
+            modes={theme.colors}
+            colorMode={colorMode}
+            setColorMode={setColorMode}
+          />
         </Flex>
         {props.location && props.location.pathname === rootPath && (
           <Bio sx={{ width: "100%" }} />
@@ -153,14 +144,3 @@ BlogHeader.propTypes = {
 }
 
 export default BlogHeader
-
-/*
-
-            checkedIcon={checkedIcon}
-            uncheckedIcon={uncheckedIcon}
-            checked={isDark}
-            onChange={toggleColorMode}
-
-
-
-*/
