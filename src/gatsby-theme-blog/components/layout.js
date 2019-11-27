@@ -9,7 +9,7 @@ import Header from "./header"
 
 const BlogLayout = ({ children, ...props }) => (
   <Styled.root>
-    <Helmet htmlAttributes={{ style: { overflowY: "scroll" } }} />
+    <Helmet htmlAttributes={{ style: "overflow-y: scroll;" }} />
     <Header {...props} />
     <div>
       <div
