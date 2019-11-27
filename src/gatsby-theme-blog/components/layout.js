@@ -1,7 +1,6 @@
 // npm
 import React from "react"
 import { css, Styled } from "theme-ui"
-import Helmet from "react-helmet"
 import PropTypes from "prop-types"
 
 // self
@@ -9,7 +8,6 @@ import Header from "./header"
 
 const BlogLayout = ({ children, ...props }) => (
   <Styled.root>
-    <Helmet htmlAttributes={{ style: "overflow-y: scroll;" }} />
     <Header {...props} />
     <div>
       <div
