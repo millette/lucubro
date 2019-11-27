@@ -5,13 +5,14 @@
 import {
   jsx,
   css,
-  useColorMode,
+  // useColorMode,
   Styled,
   Header,
   Container,
   Flex,
+  useThemeUI,
 } from "theme-ui"
-import Switch from "gatsby-theme-blog/src/components/switch"
+// import Switch from "gatsby-theme-blog/src/components/switch"
 import sun from "gatsby-theme-blog/assets/sun.png"
 import moon from "gatsby-theme-blog/assets/moon.png"
 import PropTypes from "prop-types"
@@ -102,10 +103,19 @@ const uncheckedIcon = (
 )
 
 const BlogHeader = ({ children, title, ...props }) => {
-  const [colorMode, setColorMode] = useColorMode()
-  const isDark = colorMode === `dark`
+  const { theme, colorMode, setColorMode } = useThemeUI()
+  const modes = Object.keys(theme.colors.modes).sort()
+  modes.push("light")
+
+  let modeIndex = modes.indexOf(colorMode)
+  if (modeIndex === -1) modeIndex = 0
+
   const toggleColorMode = (e) => {
-    setColorMode(isDark ? `light` : `dark`)
+    const shifted = e.shiftKey ? -1 : 1
+    let newMode = modeIndex + shifted
+    if (newMode < 0) newMode = modes.length - 1
+    if (newMode > modes.length - 1) newMode = 0
+    setColorMode(modes[newMode])
   }
 
   return (
@@ -124,13 +134,9 @@ const BlogHeader = ({ children, title, ...props }) => {
           }}
         >
           <Title {...props}>{title}</Title>
-          <Switch
-            aria-label="Toggle dark mode"
-            checkedIcon={checkedIcon}
-            uncheckedIcon={uncheckedIcon}
-            checked={isDark}
-            onChange={toggleColorMode}
-          />
+          <div aria-label="Toggle dark mode" onClick={toggleColorMode}>
+            Switch
+          </div>
         </Flex>
         {props.location && props.location.pathname === rootPath && (
           <Bio sx={{ width: "100%" }} />
@@ -147,3 +153,14 @@ BlogHeader.propTypes = {
 }
 
 export default BlogHeader
+
+/*
+
+            checkedIcon={checkedIcon}
+            uncheckedIcon={uncheckedIcon}
+            checked={isDark}
+            onChange={toggleColorMode}
+
+
+
+*/
