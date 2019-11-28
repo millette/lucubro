@@ -9,6 +9,8 @@ import themes from "./themes"
 
 themes.forEach((t, i) => (theme.colors.modes[`custom-${i}`] = t))
 
+theme.colors.modes.ORIGINAL = { ...theme.colors, modes: undefined }
+
 export default deepmerge(theme, {
   useColorSchemeMediaQuery: true,
   styles: {

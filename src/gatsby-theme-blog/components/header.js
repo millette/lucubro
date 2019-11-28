@@ -1,8 +1,6 @@
-/** @jsx jsx */
-
 // npm
-// import React from "react"
-import { jsx, css, Styled, Header, Container, Flex, useThemeUI } from "theme-ui"
+import React from "react"
+import { css, Styled, Header, Container, Flex, useThemeUI } from "theme-ui"
 import PropTypes from "prop-types"
 import { withPrefix } from "gatsby"
 
@@ -61,12 +59,12 @@ Title.propTypes = {
   children: PropTypes.any,
 }
 
-const Switch = ({ modes: { modes, ...light }, colorMode, setColorMode }) => {
-  const modeKeys = Object.keys(modes).sort()
+const Switch = ({ modes, colorMode, setColorMode }) => {
+  const modeKeys = Object.keys(modes)
+    .filter((n) => n !== "ORIGINAL")
+    .sort()
   modeKeys.push("light")
-
   const modeIndex = Math.max(0, modeKeys.indexOf(colorMode)) + modeKeys.length
-
   const pal = [
     (modeIndex - 2) % modeKeys.length,
     (modeIndex - 1) % modeKeys.length,
@@ -76,8 +74,10 @@ const Switch = ({ modes: { modes, ...light }, colorMode, setColorMode }) => {
   ].map((n) => ({
     n,
     name: modeKeys[n],
-    fg: modes[modeKeys[n]] ? modes[modeKeys[n]].text : light.text,
-    bg: modes[modeKeys[n]] ? modes[modeKeys[n]].background : light.background,
+    fg: modes[modeKeys[n]] ? modes[modeKeys[n]].text : modes.ORIGINAL.text,
+    bg: modes[modeKeys[n]]
+      ? modes[modeKeys[n]].background
+      : modes.ORIGINAL.background,
   }))
 
   const click = (g) => () => setColorMode(g)
@@ -107,7 +107,7 @@ const Switch = ({ modes: { modes, ...light }, colorMode, setColorMode }) => {
 }
 
 Switch.propTypes = {
-  modes: PropTypes.array.isRequired,
+  modes: PropTypes.object.isRequired,
   colorMode: PropTypes.string.isRequired,
   setColorMode: PropTypes.func.isRequired,
 }
@@ -132,7 +132,7 @@ const BlogHeader = ({ children, title, ...props }) => {
         >
           <Title {...props}>{title}</Title>
           <Switch
-            modes={theme.colors}
+            modes={theme.colors.modes}
             colorMode={colorMode}
             setColorMode={setColorMode}
           />
